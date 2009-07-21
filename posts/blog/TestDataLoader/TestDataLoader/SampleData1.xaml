@@ -1,0 +1,32 @@
+﻿<!-- XAML Test Data Loader Sample Application by Nicholas Armstrong
+     Available online at http://nicholasarmstrong.com
+
+    This code is designed for illustration purposes only.  
+    Exception handling and other coding practices required for production
+    systems may have been ignored in order to reduce this code to its 
+    simplest possible form.
+-->
+
+<!-- Sample Test Data File -->
+<TestDataLoader xmlns="clr-namespace:NicholasArmstrong.Posts.TestDataLoader;assembly=TestDataLoader" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <TestDataLoader.Locations>
+        <Location Id="0">Kitchen</Location>
+        <Location Id="1">Living Room</Location>
+        <Location Id="2">Den</Location>
+        <Location Id="3">Bedroom</Location>
+    </TestDataLoader.Locations>
+    <TestDataLoader.Devices>
+        <Device Name="Thermostat" Id="0" LocationId="2" />
+        <Device Name="Chandelier" Id="1" LocationId="1">
+            <Attribute Name="Upper Lights" Id="0" Power="{x:Null}" Position="4" Type="Lamp" />
+            <Attribute Name="Middle Lights" Id="1" Power="{x:Null}" Position="3" Type="Lamp" />
+            <Attribute Name="Lower Lights" Id="2" Power="{x:Null}" Position="2" Type="Lamp" />
+        </Device>
+        <Device Name="Floor Fan" Id="2" LocationId="2">
+            <Attribute Name="Fan Blades" Id="0" Power="120W" Position="1" Type="Fan" />
+        </Device>
+        <Device Name="Clock" Id="3" LocationId="2">
+            <Attribute Name="FM Radio" Id="0" Power="{x:Null}" Position="1" Type="Radio" />
+        </Device>
+    </TestDataLoader.Devices>
+</TestDataLoader>

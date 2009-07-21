@@ -1,0 +1,17 @@
+﻿<!-- XAML Test Data Loader Sample Application by Nicholas Armstrong
+     Available online at http://nicholasarmstrong.com
+
+    This code is designed for illustration purposes only.  
+    Exception handling and other coding practices required for production
+    systems may have been ignored in order to reduce this code to its 
+    simplest possible form.
+-->
+
+<Application x:Class="NicholasArmstrong.Posts.TestDataLoader.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="Window1.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
