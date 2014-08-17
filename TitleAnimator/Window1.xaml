@@ -1,0 +1,258 @@
+﻿<!--
+
+The WPF Title Animator (version 1.0)
+By Nicholas Armstrong
+August 2007
+http://www.nicholasarmstrong.com/projects/
+
+This program is licensed under the Creative Commons Attribution-Share Alike
+2.5 Canada License.
+http://creativecommons.org/licenses/by-sa/2.5/ca/deed.en_CA
+
+Any conditions not covered by the above license must be obtained by contacting
+the author through http://www.nicholasarmstrong.com.
+
+-->
+<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="NicholasArmstrong.Projects.TitleAnimator.Window1"
+	x:Name="Window"
+	Title="Window1"
+	Width="640" Height="480" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="None" Background="#FF000000" KeyUp="Window_KeyUp" MouseUp="Window_MouseUp" SizeChanged="Window_SizeChanged" Cursor="None" AllowsTransparency="True" >
+	<Window.Resources>
+		<Storyboard x:Key="titleSet1Animation" Completed="titleSet1Animation_Completed">
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="titleBox1" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.8000000" Value="1" KeySpline="0.5,0.5,0.75,1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01.2000000" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:03" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:04" Value="1"/>
+				<SplineDoubleKeyFrame KeySpline="0.125,0,0.875,1" KeyTime="00:00:05.2000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="nameBox1" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:01.2000000" Value="0"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:03" Value="1" KeySpline="0.5,0.5,0.75,1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:04" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:04.3000000" Value="1"/>
+				<SplineDoubleKeyFrame KeySpline="0.125,0,0.75,1" KeyTime="00:00:05.3000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="titleSet1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+				<SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,1" KeyTime="00:00:00" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:05.4000000" Value="1.2" KeySpline="0.5,0.5,0.75,1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="titleSet1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+				<SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,1" KeyTime="00:00:00" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:05.4000000" Value="1.2" KeySpline="0.5,0.5,0.75,1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+    <Storyboard x:Key="titleSet2Animation" Completed="titleSet2Animation_Completed">
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="titleBox2" Storyboard.TargetProperty="(UIElement.Opacity)">
+        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:00.8000000" Value="1" KeySpline="0.5,0.5,0.75,1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:01.2000000" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:03" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04" Value="1"/>
+        <SplineDoubleKeyFrame KeySpline="0.125,0,0.875,1" KeyTime="00:00:05.2000000" Value="0"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="nameBox2" Storyboard.TargetProperty="(UIElement.Opacity)">
+        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:00.8000000" Value="0"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:01.2000000" Value="0"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:03" Value="1" KeySpline="0.5,0.5,0.75,1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04.3000000" Value="1"/>
+        <SplineDoubleKeyFrame KeySpline="0.125,0,0.75,1" KeyTime="00:00:05.3000000" Value="0"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="titleSet2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+        <SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,1" KeyTime="00:00:00" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:05.4000000" Value="1.2" KeySpline="0.5,0.5,0.75,1"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="titleSet2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+        <SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,1" KeyTime="00:00:00" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:05.4000000" Value="1.2" KeySpline="0.5,0.5,0.75,1"/>
+      </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+		<Storyboard x:Key="titleSet1OverlapAnimation" Completed="titleSet1Animation_Completed">
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="titleSet1">
+        <SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,1" KeyTime="00:00:00" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:05.4000000" Value="1.2" KeySpline="0.5,0.5,0.75,1"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="titleSet1">
+        <SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,1" KeyTime="00:00:00" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:05.4000000" Value="1.2" KeySpline="0.5,0.5,0.75,1"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="titleBox1">
+        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:00.8" Value="1" KeySpline="0.5,0.5,0.75,1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04.3000000" Value="1"/>
+        <SplineDoubleKeyFrame KeySpline="0.125,0,0.75,1" KeyTime="00:00:05.3000000" Value="0"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="nameBox1">
+        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:00.8" Value="1" KeySpline="0.5,0.5,0.75,1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04.3000000" Value="1"/>
+        <SplineDoubleKeyFrame KeySpline="0.125,0,0.75,1" KeyTime="00:00:05.3000000" Value="0"/>
+      </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="titleSet2OverlapAnimation" Completed="titleSet2Animation_Completed">
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="titleSet2">
+        <SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,1" KeyTime="00:00:00" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:05.4000000" Value="1.2" KeySpline="0.5,0.5,0.75,1"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="titleSet2">
+        <SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,1" KeyTime="00:00:00" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:05.4000000" Value="1.2" KeySpline="0.5,0.5,0.75,1"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="titleBox2">
+        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:00.8" Value="1" KeySpline="0.5,0.5,0.75,1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04.3000000" Value="1"/>
+        <SplineDoubleKeyFrame KeySpline="0.125,0,0.75,1" KeyTime="00:00:05.3000000" Value="0"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="nameBox2">
+        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:00.8" Value="1" KeySpline="0.5,0.5,0.75,1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04.3000000" Value="1"/>
+        <SplineDoubleKeyFrame KeySpline="0.125,0,0.75,1" KeyTime="00:00:05.3000000" Value="0"/>
+      </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Style x:Key="LocalResource.ItemHeaderText" TargetType="{x:Type TextBlock}">
+      <Setter Property="FontFamily" Value="pack://application:,,,/Resources/#Diavlo"/>
+      <Setter Property="FontSize" Value="16" />
+      <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style x:Key="LocalResource.ItemNameText" TargetType="{x:Type TextBlock}">
+      <Setter Property="FontFamily" Value="Calibri"/>
+      <Setter Property="FontSize" Value="30" />
+      <Setter Property="Foreground" Value="White" />
+      <Setter Property="Typography.Capitals" Value="SmallCaps"/>
+    </Style>
+    <Style x:Key="LocalResource.DisclaimerText" TargetType="{x:Type TextBlock}">
+      <Setter Property="FontFamily" Value="Calibri"/>
+      <Setter Property="FontSize" Value="10" />
+      <Setter Property="Foreground" Value="White" />
+      <Setter Property="Typography.Capitals" Value="SmallCaps"/>
+    </Style>
+    <DataTemplate x:Key="LocalResource.NameBoxItem">
+      <TextBlock Style="{DynamicResource LocalResource.ItemNameText}"  Text="{Binding}" TextWrapping="Wrap" HorizontalAlignment="Center" />
+    </DataTemplate>
+    <Style x:Key="LocalResource.TextListBox" TargetType="{x:Type ListBox}">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate>
+            <ItemsPresenter HorizontalAlignment="Stretch" Margin="0"/>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+      <Setter Property="ItemContainerStyle">
+        <Setter.Value>
+          <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+          </Style>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Storyboard x:Key="disclaimerTextAnimation" Completed="disclaimerTextAnimation_Completed">
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:1" Storyboard.TargetName="finalDisclaimer" Storyboard.TargetProperty="(UIElement.Opacity)">
+        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        <SplineDoubleKeyFrame KeySpline="0.125,0,0.875,1" KeyTime="00:00:02" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04" Value="1"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:07" Value="0"/>
+      </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="initialDelayAnimation" Completed="initialDelayAnimation_Completed">
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="usableScreenWidth" Storyboard.TargetProperty="(UIElement.Opacity)">
+        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.001"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+      </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="overlap1Animation" Completed="overlap1Animation_Completed">
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="usableScreenWidth" Storyboard.TargetProperty="(UIElement.Opacity)">
+        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04.75" Value="0.001"/>
+      </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="overlap2Animation" Completed="overlap2Animation_Completed">
+      <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="usableScreenWidth" Storyboard.TargetProperty="(UIElement.Opacity)">
+        <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        <SplineDoubleKeyFrame KeyTime="00:00:04.75" Value="0.001"/>
+      </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="windowFadeOutAnimation" Completed="windowFadeOutAnimation_Completed">
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+				<SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+				<SplineColorKeyFrame KeyTime="00:00:02" Value="#00000000"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="windowFadeInAnimation" Completed="windowFadeInAnimation_Completed">
+			<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+				<SplineColorKeyFrame KeyTime="00:00:00" Value="#00000000"/>
+				<SplineColorKeyFrame KeyTime="00:00:00.75" Value="#FF000000"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+	</Window.Resources>
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource windowFadeInAnimation}"/>
+		</EventTrigger>
+	</Window.Triggers>
+  <Grid x:Name="LayoutRoot">
+    <Grid.Resources>
+      
+    </Grid.Resources>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="80"/>
+      <ColumnDefinition/>
+      <ColumnDefinition Width="80"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="80"/>
+      <RowDefinition/>
+      <RowDefinition Height="80"/>
+    </Grid.RowDefinitions>
+    <Rectangle Fill="#FF000000" Margin="0,0,0,0" x:Name="usableScreenWidth" Grid.Column="1" Opacity="0"/>
+	<Grid Grid.Column="1" Grid.Row="1">
+	<Grid.LayoutTransform>
+        <ScaleTransform x:Name="contentSize" />
+      </Grid.LayoutTransform>
+    <StackPanel VerticalAlignment="Center"  RenderTransformOrigin="0.5,0.5" x:Name="titleSet1">
+      
+    	<StackPanel.RenderTransform>
+    		<TransformGroup>
+    			<ScaleTransform ScaleX="1" ScaleY="1"/>
+    			<SkewTransform AngleX="0" AngleY="0"/>
+    			<RotateTransform Angle="0"/>
+    			<TranslateTransform X="0" Y="0"/>
+    		</TransformGroup>
+    	</StackPanel.RenderTransform>
+      
+      <TextBlock Style="{DynamicResource LocalResource.ItemHeaderText}" Opacity="0" TextWrapping="Wrap" HorizontalAlignment="Center" x:Name="titleBox1" RenderTransformOrigin="0.5,0.5"/>
+      <ListBox HorizontalAlignment="Stretch" x:Name="nameBox1" ItemTemplate="{StaticResource LocalResource.NameBoxItem}" RenderTransformOrigin="0.5,0.5" Opacity="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{StaticResource LocalResource.TextListBox}" />
+    </StackPanel>
+	<StackPanel VerticalAlignment="Center"  RenderTransformOrigin="0.5,0.5" x:Name="titleSet2">
+      
+    	<StackPanel.RenderTransform>
+    		<TransformGroup>
+    			<ScaleTransform ScaleX="1" ScaleY="1"/>
+    			<SkewTransform AngleX="0" AngleY="0"/>
+    			<RotateTransform Angle="0"/>
+    			<TranslateTransform X="0" Y="0"/>
+    		</TransformGroup>
+    	</StackPanel.RenderTransform>
+      
+      <TextBlock Style="{DynamicResource LocalResource.ItemHeaderText}" Opacity="0" TextWrapping="Wrap" HorizontalAlignment="Center" x:Name="titleBox2" RenderTransformOrigin="0.5,0.5"/>
+    <ListBox HorizontalAlignment="Stretch" x:Name="nameBox2" ItemTemplate="{StaticResource LocalResource.NameBoxItem}" RenderTransformOrigin="0.5,0.5" Opacity="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{StaticResource LocalResource.TextListBox}" />
+  </StackPanel>
+  <TextBlock Style="{DynamicResource LocalResource.DisclaimerText}" Opacity="0" TextWrapping="Wrap" HorizontalAlignment="Center" x:Name="finalDisclaimer" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom"/>
+	</Grid>
+  </Grid>
+</Window>
