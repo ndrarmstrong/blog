@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="SideloadWithWiX" Publisher="CN=Nicholas" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>SideloadWithWiX</DisplayName>
+    <PublisherDisplayName>Nicholas Armstrong</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="SideloadWithWiX.App">
+      <m2:VisualElements DisplayName="SideloadWithWiX" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="SideloadWithWiX" ForegroundText="light" BackgroundColor="#428bca">
+        <m2:DefaultTile ShortName="SideloadWithWix">
+        </m2:DefaultTile>
+        <m2:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#428bca" />
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+</Package>

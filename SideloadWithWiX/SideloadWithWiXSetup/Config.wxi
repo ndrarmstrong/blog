@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!-- Product info -->
+  <?define ProductName = "SideloadWithWiX" ?>
+  <?define ProductManufacturer = "Nicholas Armstrong" ?>
+  <?define ProductVersion = "0.0.1" ?>
+  <?define UpdateCode = "c6e532dc-d5b6-4510-a163-334d8623dd7e" ?>
+
+  <!-- Install settings-->
+  <?define InstallFolderName = "SideloadWithWiX" ?>
+
+  <!-- Scripts -->
+  <?define PowerShellFlags = "-NoProfile -NonInteractive -InputFormat None -ExecutionPolicy Bypass" ?>
+  <?define CheckLicensePs = "Check-WindowsDeveloperLicense.ps1" ?>
+  <?define AddAppDevPackage = "Add-AppDevPackage.ps1" ?>
+  <?define RemoveAppPackagePs = "Remove-AppPackage.ps1" ?>
+
+  <!-- App settings -->
+  <?define AppxInstallPath = "SideloadWithWiX_Test" ?>
+  <?define AppxCertPath = "SideloadWithWiX.cer" ?>
+  <?define AppxPackageName = "SideloadWithWiX" ?>
+
+
+</Include>

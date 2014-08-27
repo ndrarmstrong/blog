@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include $(sys.CURRENTDIR)\Config.wxi?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="$(var.ProductName)" Language="1033" Version="$(var.ProductVersion)" Manufacturer="$(var.ProductManufacturer)" UpgradeCode="$(var.UpdateCode)">
+    <Package InstallerVersion="405" Compressed="yes" InstallScope="perMachine" Platform="x86" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="ProductFeature" Title="SideloadWithWiXSetup" Level="1">
+      <ComponentGroupRef Id="ComponentGroup.App" />
+      <ComponentGroupRef Id="ComponentGroup.PowerShellScripts" />
+    </Feature>
+
+    <UIRef Id="WixUI_Minimal" />
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="$(var.InstallFolderName)" />
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <!-- ComponentGroup.App is defined in .wixproj file -->
+
+    <!-- Install scripts -->
+    <ComponentGroup Id="ComponentGroup.PowerShellScripts" Directory="INSTALLFOLDER">
+      <Component Id="Component.CheckWindowsDeveloperLicense">
+        <File Id="File.CheckWindowsDeveloperLicense" Source="$(var.CheckLicensePs)"/>
+      </Component>
+      <Component Id="Component.RemoveAppPackage">
+        <File Id="File.RemoveAppPackage" Source="$(var.RemoveAppPackagePs)"/>
+      </Component>
+    </ComponentGroup>
+
+    <!--  Locate PowerShell  -->
+    <Property Id="POWERSHELLEXE">
+      <RegistrySearch Id="POWERSHELLEXE"
+                      Type="raw"
+                      Root="HKLM"
+                      Key="SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell"
+                      Name="Path" />
+    </Property>
+    <Condition Message="Unable to locate PowerShell. PowerShell is required to install this application.">
+      <![CDATA[Installed OR POWERSHELLEXE ]]>
+    </Condition>
+
+    <!--  Check for Windows developer license  -->
+    <CustomAction
+        Id="CustomAction.CheckWindowsDeveloperLicense_Cmd"
+        Property="CustomAction.CheckWindowsDeveloperLicense"
+        Value="&quot;[POWERSHELLEXE]&quot; $(var.PowerShellFlags) -File &quot;[#File.CheckWindowsDeveloperLicense]&quot;" />
+    <CustomAction
+        Id="CustomAction.CheckWindowsDeveloperLicense"
+        BinaryKey="WixCA"
+        DllEntry="CAQuietExec"
+        Execute="deferred"
+        Return="check"
+        Impersonate="no" />
+
+    <!-- Install cert as admin -->
+    <CustomAction
+      Id="CustomAction.InstallCertificate_Cmd"
+      Property="CustomAction.InstallCertificate"
+      Value="&quot;[POWERSHELLEXE]&quot; $(var.PowerShellFlags) -File &quot;[INSTALLFOLDER]$(var.AppxInstallPath)\$(var.AddAppDevPackage)&quot; -force -CertificatePath &quot;[INSTALLFOLDER]$(var.AppxInstallPath)\$(var.AppxCertPath)&quot;" />
+    <CustomAction
+      Id="CustomAction.InstallCertificate"
+      BinaryKey="WixCA"
+      DllEntry="CAQuietExec"
+      Execute="deferred"
+      Return="check"
+      Impersonate="no" />
+
+    <!-- Install app as user -->
+    <CustomAction
+      Id="CustomAction.InstallAppx_Cmd"
+      Property="CustomAction.InstallAppx"
+      Value="&quot;[POWERSHELLEXE]&quot; $(var.PowerShellFlags) -File &quot;[INSTALLFOLDER]$(var.AppxInstallPath)\$(var.AddAppDevPackage)&quot; -force" />
+    <CustomAction
+      Id="CustomAction.InstallAppx"
+      BinaryKey="WixCA"
+      DllEntry="CAQuietExec"
+      Execute="deferred"
+      Return="check"
+      Impersonate="yes" />
+
+    <!-- Uninstall app as user -->
+    <CustomAction
+      Id="CustomAction.RemoveAppx_Cmd"
+      Property="CustomAction.RemoveAppx"
+      Value="&quot;[POWERSHELLEXE]&quot; $(var.PowerShellFlags) -File &quot;[#File.RemoveAppPackage]&quot; &quot;$(var.AppxPackageName)&quot;" />
+    <CustomAction
+      Id="CustomAction.RemoveAppx"
+      BinaryKey="WixCA"
+      DllEntry="CAQuietExec"
+      Execute="deferred"
+      Return="check"
+      Impersonate="yes" />
+
+  <!-- Sequence custom actions -->
+    <InstallExecuteSequence>
+      <Custom Action="CustomAction.RemoveAppx_Cmd"
+              Before="RemoveFiles">
+        Installed
+      </Custom>
+      <Custom Action="CustomAction.RemoveAppx"
+              After="CustomAction.RemoveAppx_Cmd">
+        Installed
+      </Custom>
+      <Custom Action="CustomAction.CheckWindowsDeveloperLicense_Cmd"
+              After="InstallFiles">
+        NOT Installed
+      </Custom>
+      <Custom Action="CustomAction.CheckWindowsDeveloperLicense"
+              After="CustomAction.CheckWindowsDeveloperLicense_Cmd">
+        NOT Installed
+      </Custom>
+      <Custom Action="CustomAction.InstallCertificate_Cmd"
+              After="CustomAction.CheckWindowsDeveloperLicense">
+        NOT Installed
+      </Custom>
+      <Custom Action="CustomAction.InstallCertificate"
+              After="CustomAction.InstallCertificate_Cmd">
+        NOT Installed
+      </Custom>
+      <Custom Action="CustomAction.InstallAppx_Cmd"
+              After="CustomAction.InstallCertificate">
+        NOT Installed
+      </Custom>
+      <Custom Action="CustomAction.InstallAppx"
+              After="CustomAction.InstallAppx_Cmd">
+        NOT Installed
+      </Custom>
+    </InstallExecuteSequence>
+  </Fragment>
+</Wix>
